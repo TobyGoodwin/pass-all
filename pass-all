@@ -18,7 +18,6 @@ show() {
 d=$HOME/.password-store
 find $d -name '*.gpg' |
   sort |
-  grep -v "$d/p.gpg" |
   sed "s,$d/,,;s,.gpg\$,," |
   #head -n3 |
   while read p; do
