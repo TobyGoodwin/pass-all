@@ -1,0 +1,27 @@
+#!/bin/sh
+
+show() {
+  this=$1
+  first=$(echo $this | cut -d/ -f1)
+  if [ "$first" = "$last" ]; then
+    head=$(echo $first | sed 's,., ,g')$(echo $this | sed 's,.*/, ,')
+  else
+    echo
+    head=$this
+  fi
+  { echo "$head"; pass show $this; } |
+    tr '\n' '\t' |
+    sed 's,\t$,\n,;s,\t, · ,g'
+  last=$first
+}
+
+d=$HOME/.password-store
+find $d -name '*.gpg' |
+  sort |
+  grep -v "$d/p.gpg" |
+  sed "s,$d/,,;s,.gpg\$,," |
+  #head -n3 |
+  while read p; do
+    show $p
+  done |
+  sed 1d
