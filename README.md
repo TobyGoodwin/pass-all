@@ -6,4 +6,4 @@ out every password in your store in a compact format, making it easy to
 generate a hard copy.
 
 `pass-all` works best with a two-level hierarchy, for example if you name your
-passwords like `Internet/google`, `Shopping/amazon`, `Social/facebook'.
+passwords like `Internet/google`, `Shopping/amazon`, `Social/facebook`
